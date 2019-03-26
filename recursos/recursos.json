@@ -1,0 +1,37 @@
+{
+  "esp": {
+    "nombre": "WoT ESP",
+    "descripcion": "Dispositivo ESP8632 conectado con WoT.",
+    "puerto": 8484,
+    "sensores": {
+      "temperatura": {
+        "nombre": "Sensor de Temperatura",
+        "descripcion": "Sensor de temperatura ambiente.",
+        "unidad": "celsius",
+        "valor": 0,
+        "gpio": 12
+      },
+      "humedad": {
+        "nombre": "Sensor de Humedad",
+        "descripcion": "Un sensor de humedad.",
+        "unidad": "%",
+        "valor": 0,
+        "gpio": 12
+      }
+    },
+    "actuadores": {
+      "motores": {
+        "motor1": {
+          "nombre": "Motor 1",
+          "valor": false,
+          "gpio": 4
+        },
+        "motor2": {
+          "nombre": "Motor 2",
+          "valor": false,
+          "gpio": 9
+        }
+      }
+    }
+  }
+}
