@@ -1,0 +1,21 @@
+{
+  "name": "arblock-wot",
+  "version": "1.0.0",
+  "description": "Una extensión de arblock con WoT para el internet de las cosas",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "web",
+    "of",
+    "things",
+    "wot",
+    "internet",
+    "of",
+    "things",
+    "arblock"
+  ],
+  "author": "Ricardo Tornero",
+  "license": "ISC"
+}
