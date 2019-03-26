@@ -1,2 +1,2 @@
-var recursos = require('./recursos')
+let recursos = require('./recursos')
 module.exports = recursos

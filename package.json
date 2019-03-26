@@ -17,5 +17,8 @@
     "arblock"
   ],
   "author": "Ricardo Tornero",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
 }

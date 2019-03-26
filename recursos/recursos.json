@@ -21,12 +21,12 @@
     },
     "actuadores": {
       "motores": {
-        "motor1": {
+        "1": {
           "nombre": "Motor 1",
           "valor": false,
           "gpio": 4
         },
-        "motor2": {
+        "2": {
           "nombre": "Motor 2",
           "valor": false,
           "gpio": 9
