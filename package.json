@@ -20,6 +20,7 @@
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "node-dht-sensor": "0.0.34"
   }
 }
