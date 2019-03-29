@@ -53,5 +53,5 @@ const simular = () => {
 }
 
 const mostrarValor = () => {
-    console.info(`Temperatura ${modelo.temperatura.valor} Cº. Humedad ${modelo.humedad.valor}`)
+    console.log(`Temperatura ${modelo.temperatura.valor} Cº. Humedad ${modelo.humedad.valor}`)
 }
