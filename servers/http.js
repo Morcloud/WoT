@@ -3,8 +3,11 @@ let rutaActuadores = require('./../rutas/actuadores');
 let rutaSensores = require('./../rutas/sensores');
 let convertidor = require('./../middleware/convertidor')
 let cors = require('cors');
+let bodyParser = require('body-parser')
 
 let app = express();
+
+app.use(bodyParser.json())
 
 app.use(cors());
 
