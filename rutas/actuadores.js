@@ -23,4 +23,20 @@ router.route('/motores/:id').get( (req, res, next) => {
     next()
 })
 
+router.route('/leds').get((req, res, next) => {
+    res.send(recursos.esp.actuadores.leds)
+    req.result = recursos.esp.actuadores.leds
+    next()
+})
+
+router.route('/leds/:id').get((req, res, next) => {
+    res.send(recursos.esp.actuadores.leds[req.params.id])
+}).put((req, res, next) => {
+    let ledSeleccionado = recursos.esp.actuadores.leds[req.params.id]
+    ledSeleccionado.valor = req.body.valor
+    console.log(`LED ${req.params.id} cambiado a ${ledSeleccionado}`)
+    req.result = ledSeleccionado
+    next()
+})
+
 module.exports = router
