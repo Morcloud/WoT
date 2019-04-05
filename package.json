@@ -23,8 +23,12 @@
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "msgpack5": "^4.2.1",
-    "node-dht-sensor": "0.0.34",
     "node-json2html": "^1.2.0",
     "nodemon": "^1.18.10"
+  },
+  "optionalDependencies": {
+    "onoff": "^4.1.1",
+    "node-dht-sensor": "0.0.34"
   }
 }
+

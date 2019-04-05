@@ -6,12 +6,12 @@ module.exports = () =>{
     return (req, res, next) => {
         console.log('Middleware de conversión de representación llamado')
         if(req.result) {
-            if(req.accepts('html')) {
+            if(req.accepts('json')) {
                 console.log('Representación JSON seleccionada')
                 res.send(req.result)
                 return
             }
-            if(req.accepts('json')) {
+            if(req.accepts('html')) {
                 console.log('Representación HTML selecionada')
                 let transformar = {'tag': 'div', 'html': '${nombre} : ${valor}'};
                 res.send(json2html.transform(req.result, transformar))
