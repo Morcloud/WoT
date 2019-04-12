@@ -15,19 +15,19 @@ var client = mqtt.connect("mqtts://mqtt.evrythng.com:8883", {
 
 client.on('connect', function () {
   client.subscribe(thngUrl+'/properties/');
-  client.subscribe(thngUrl+'/actions/all'); // #A
+  client.subscribe(thngUrl+'/actions/all'); 
   updateProperty('realTime',true);
   if (! updateInterval) updateInterval = setInterval(updateProperties, 5000);
 });
 
 client.on('message', function(topic, message) {
   var resources = topic.split('/');
-  if (resources[1] && resources[1] === "thngs"){ // #B
-    if (resources[2] && resources[2] === thngId){  // #C
-      if (resources[3] && resources[3] === "properties"){ //#D
+  if (resources[1] && resources[1] === "thngs"){ 
+    if (resources[2] && resources[2] === thngId){  
+      if (resources[3] && resources[3] === "properties"){
         var property = JSON.parse(message);
         console.log('La propiedad fue actualizada: '+property[0].key+'='+property[0].value); 
-      } else if (resources[3] && resources[3] === "actions"){ //#E
+      } else if (resources[3] && resources[3] === "actions"){ 
         var action = JSON.parse(message);
         handleAction(action); 
       }
@@ -36,31 +36,31 @@ client.on('message', function(topic, message) {
 });
 
 function handleAction(action) {
-  switch(action.type) { // #F
-    case '_setStatus':
-      console.log('ACTION: _setStatus changed to: '+action.customFields.status); // #G
+  switch(action.type) { 
+    case 'led1':
+      console.log('led 1 cambiado a: '+action.customFields.status); 
       status=Boolean(action.customFields.status);
       updateProperty ('status',status);
-      /* Do something else too */
+      
       break;
-    case '_setLevel':
-      console.log('ACTION: _setLevel changed to: '+action.customFields.level);
+    case 'led2':
+      console.log('les 2 cambiado a: '+action.customFields.level);
       break;
     default:
-      console.log('ACTION: Unknown action type: '+action.type);
+      console.log('Acción desconocida: '+action.type);
       break;
   }
 }
 
 function updateProperties() {
-  var voltage = (219.5 + Math.random()).toFixed(3); // #H
+  var voltage = (219.5 + Math.random()).toFixed(3); 
   updateProperty ('voltage',voltage);
 
-  var current = (Math.random()*10).toFixed(3); // #I
+  var current = (Math.random()*10).toFixed(3); 
   if (status==false) current = 0.001;
-  updateProperty ('current',current);
+  updateProperty ('curriente',current);
 
-  var power = (voltage * current * (0.6+Math.random()/10)).toFixed(3); // #J
+  var power = (voltage * current * (0.6+Math.random()/10)).toFixed(3); 
   updateProperty ('power',power);
 }
 
