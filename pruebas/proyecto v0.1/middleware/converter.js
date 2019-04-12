@@ -1,38 +1,30 @@
 var msgpack = require('msgpack5')(),
-  encode = msgpack.encode, //#A
+  encode = msgpack.encode, 
   json2html = require('node-json2html');
 
-module.exports = function () { //#B
+module.exports = function () { 
   return function (req, res, next) {
-    console.info('Representation converter middleware called!');
-    if (req.result) { //#C
-      switch (req.accepts(['json', 'html', 'application/x-msgpack'])) { //#D
+    console.info('Middleware de representation de datos solicitado');
+    if (req.result) { 
+      switch (req.accepts(['json', 'html', 'application/x-msgpack'])) { 
         case 'html':
-          console.info('HTML representation selected!');
+          console.info('Representación HTML solicitada');
           var transform = {'tag': 'div', 'html': '${name} : ${value}'};
-          res.send(json2html.transform(req.result, transform)); //#E
+          res.send(json2html.transform(req.result, transform)); 
           return;
         case 'application/x-msgpack':
-          console.info('MessagePack representation selected!');
+          console.info('Representación MessagePack solicitada');
           res.type('application/x-msgpack');
-          res.send(encode(req.result)); //#F
+          res.send(encode(req.result)); 
           return;
-        default: //#G
-          console.info('Defaulting to JSON representation!');
+        default: 
+          console.info('Representando datos a JSON por defecto');
           res.send(req.result);
           return;
       }
     }
     else {
-      next(); //#H
+      next(); 
     }
   }
 };
-//#A Require the two modules and instantiate a MessagePack encoder
-//#B In Express, a middleware is usually a function returning a function
-//#C Check if the previous middleware left a result for you in req.result
-//#D Get the best representation to serve from the Accept header
-//#E If HTML was requested, use json2html to transform the JSON into simple HTML
-//#F Encode the JSON result into MessagePack using the encoder and return the result to the client
-//#G For all other formats, default to JSON
-//#H If no result was present in req.result, there’s not much you can do, so call the next middleware

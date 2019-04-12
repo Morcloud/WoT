@@ -7,7 +7,7 @@ var localParams = {'simulate': false, 'frequency': 2000};
 
 exports.start = function (params) {
   localParams = params;
-  observe(model); //#A
+  observe(model); 
 
   if (localParams.simulate) {
     simulate();
@@ -22,44 +22,37 @@ exports.stop = function () {
   } else {
     actuator.unexport();
   }
-  console.info('%s plugin stopped!', pluginName);
+  console.info('%s plugin detenido', pluginName);
 };
 
 function observe(what) {
   Object.observe(what, function (changes) {
-    console.info('Change detected by plugin for %s...', pluginName);
-    switchOnOff(model.value); //#B
+    console.info('Cambio detectado del plugin para %s...', pluginName);
+    switchOnOff(model.value); 
   });
 };
 
 function switchOnOff(value) {
   if (!localParams.simulate) {
-    actuator.write(value === true ? 1 : 0, function () { //#C
-      console.info('Changed value of %s to %s', pluginName, value);
+    actuator.write(value === true ? 1 : 0, function () { 
+      console.info('Valor cambiado de %s a %s', pluginName, value);
     });
   }
 };
 
 function connectHardware() {
   var Gpio = require('onoff').Gpio;
-  actuator = new Gpio(model.gpio, 'out'); //#D
-  console.info('Hardware %s actuator started!', pluginName);
+  actuator = new Gpio(model.gpio, 'out'); 
+  console.info('Actuador %s iniciado', pluginName);
 };
 
 function simulate() {
   interval = setInterval(function () {
-    // Switch value on a regular basis
     if (model.value) {
       model.value = false;
     } else {
       model.value = true;
     }
   }, localParams.frequency);
-  console.info('Simulated %s actuator started!', pluginName);
+  console.info('Simulación del actuador %s iniciado', pluginName);
 };
-
-//#A Observe the model for the LEDs
-//#B Listen for model changes, on changes call switchOnOff
-//#C Change the LED state by changing the GPIO state
-//#D Connect the GPIO in write (output) mode
-

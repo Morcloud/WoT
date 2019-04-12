@@ -5,7 +5,7 @@ var model = resources.pi.sensors.pir;
 var pluginName = resources.pi.sensors.pir.name;
 var localParams = {'simulate': false, 'frequency': 2000};
 
-exports.start = function (params) { //#A
+exports.start = function (params) { 
   localParams = params;
   if (localParams.simulate) {
     simulate();
@@ -14,42 +14,34 @@ exports.start = function (params) { //#A
   }
 };
 
-exports.stop = function () { //#A
+exports.stop = function () { 
   if (localParams.simulate) {
     clearInterval(interval);
   } else {
     sensor.unexport();
   }
-  console.info('%s plugin stopped!', pluginName);
+  console.info('%s plugin detenido', pluginName);
 };
 
-function connectHardware() { //#B
+function connectHardware() { 
   var Gpio = require('onoff').Gpio;
-  sensor = new Gpio(model.gpio, 'in', 'both'); //#C
-  sensor.watch(function (err, value) { //#D
+  sensor = new Gpio(model.gpio, 'in', 'both'); 
+  sensor.watch(function (err, value) { 
     if (err) exit(err);
     model.value = !!value;
     showValue();
   });
-  console.info('Hardware %s sensor started!', pluginName);
+  console.info('Sensor %s iniciado', pluginName);
 };
 
-function simulate() { //#E
+function simulate() { 
   interval = setInterval(function () {
     model.value = !model.value;
     showValue();
   }, localParams.frequency);
-  console.info('Simulated %s sensor started!', pluginName);
+  console.info('Simulación de sensor %s iniciado', pluginName);
 };
 
 function showValue() {
-  console.info(model.value ? 'there is someone!' : 'not anymore!');
+  console.info(model.value ? 'Detecto movimiento' : 'Todo en calma');
 };
-
-//#A starts and stops the plugin, should be accessible from other Node.js files so we export them
-//#B require and connect the actual hardware driver and configure it
-//#C configure the GPIO pin to which the PIR sensor is connected
-//#D start listening for GPIO events, the callback will be invoked on events
-//#E allows the plugin to be in simulation mode. This is very useful when developing or when you want to test your code on a device with no sensors connected, such as your laptop.
-
-
