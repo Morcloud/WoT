@@ -1,0 +1,43 @@
+{
+  "pi": {
+    "name": "WoT Esp",
+    "description": "Chip ESPxxx conectado a WoT.",
+    "port": 8484,
+    "sensors": {
+      "temperature": {
+        "name": "Sensor de Temperatura",
+        "description": "Sensor de temperatura ambiente.",
+        "unit": "celsius",
+        "value": 0,
+        "gpio": 12
+      },
+      "humidity": {
+        "name": "Sensor de Humedad",
+        "description": "Sensor de humedad.",
+        "unit": "%",
+        "value": 0,
+        "gpio": 12
+      },
+      "pir": {
+        "name": "Sensor Infrarrojo Pasivo",
+        "description": "Sensor infrarrojo.",
+        "value": true,
+        "gpio": 17
+      }
+    },
+    "actuators": {
+      "leds": {
+        "1": {
+          "name": "LED 1",
+          "value": false,
+          "gpio": 4
+        },
+        "2": {
+          "name": "LED 2",
+          "value": false,
+          "gpio": 9
+        }
+      }
+    }
+  }
+}
