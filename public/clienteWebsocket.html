@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+        const suscribirWs = (url, msg) => {
+            let socket = new WebSocket(url)
+            socket.onmessage = event => {
+                console.log(event.data)
+            }
+            socket.onerror = error => {
+                console.log('un error a ocurrido al tratar de conectar a websocket')
+                console.log(error)
+            }
+            socket.onopen = event => {
+                if (msg) {
+                    socket.send(msg)
+                }
+            }
+        }
+        suscribirWs('ws://localhost:8484/esp/sensores/temperatura')    
+        </script>
+    </body>
+</html>
