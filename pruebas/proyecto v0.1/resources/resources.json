@@ -37,6 +37,20 @@
           "value": false,
           "gpio": 9
         }
+      },
+      "motor": {
+        "1": {
+          "name": "Motor A",
+          "gpio": 9,
+          "value": 0,
+          "pwm": 0
+        },
+        "2": {
+          "name": "Motor B",
+          "gpio": 10,
+          "value": 0, 
+          "pwm":0
+        }
       }
     }
   }
