@@ -8,9 +8,9 @@ var ledsPlugin = require('./plugins/internal/ledsPlugin'),
   dhtPlugin = require('./plugins/internal/DHT22SensorPlugin'); 
 
 // Simulación de sensores y actuadores = true
-//pirPlugin.start({'simulate': true, 'frequency': 2000}); 
+pirPlugin.start({'simulate': true, 'frequency': 2000}); 
 ledsPlugin.start({'simulate': true, 'frequency': 30000});
-//dhtPlugin.start({'simulate': true, 'frequency': 10000}); 
+dhtPlugin.start({'simulate': true, 'frequency': 10000}); 
 
 // Plugins de puerta de enlace (gateway) por CoAP
 var coapPlugin = require('./plugins/external/coapPlugin');
