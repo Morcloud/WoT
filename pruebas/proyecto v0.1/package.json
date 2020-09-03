@@ -24,7 +24,7 @@
     "messaging"
   ],
   "dependencies": {
-    "bl": "^1.0.0",
+    "bl": "^2.2.1",
     "body-parser": "^1.13.1",
     "coap": "^0.20.0",
     "cors": "^2.7.1",
