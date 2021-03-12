@@ -22,7 +22,7 @@
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
     "express": "^4.16.4",
-    "msgpack5": "^4.2.1",
+    "msgpack5": "^4.5.1",
     "node-json2html": "^1.2.0",
     "nodemon": "^1.18.10",
     "ws": "^6.2.1"
