@@ -28,7 +28,7 @@
     "body-parser": "^1.13.1",
     "coap": "^0.20.0",
     "cors": "^2.7.1",
-    "express": "^4.12.4",
+    "express": "^4.17.3",
     "msgpack5": "^3.3.0",
     "node-json2html": "^1.0.0",
     "ws": "^0.7.2"
